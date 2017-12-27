@@ -17,7 +17,8 @@
             <fileNamePattern>${LOG_HOME}/logFile/logFile %d{yyyy-MM-dd_HH-mm}.log</fileNamePattern>
             <!-- 每个文件的大小为 1KB -->
             <!--<MaxFileSize>1KB</MaxFileSize>-->
-            <maxHistory>24</maxHistory>
+            <!-- 文件有效期30天 -->
+            <maxHistory>30</maxHistory>
             <totalSizeCap>10GB</totalSizeCap>
         </rollingPolicy>
         <encoder>
