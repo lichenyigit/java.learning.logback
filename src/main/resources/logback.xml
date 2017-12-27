@@ -1,0 +1,37 @@
+<configuration>
+    <property name="LOG_HOME" value="../logs" />
+    <property name="FILE_LOG_HOME" value="../logs" />
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %L %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="fileAppender" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_HOME}/logFile.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %L %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 日志按照分钟进行分割 -->
+    <appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--<fileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/%d{yyyy-MM-dd_HH}/logFile %d{yyyy-MM-dd_HH-mm}.log</fileNamePattern>-->
+            <fileNamePattern>${FILE_LOG_HOME}/logFile.%d{yyyy-MM-dd_HH-mm}.log</fileNamePattern>
+            <!-- 每个文件的大小为 1KB -->
+            <!--<MaxFileSize>1KB</MaxFileSize>-->
+            <maxHistory>24</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %L %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="ch.qos" level="ERROR"/>
+
+    <root level="TRACE">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="fileAppender"/>
+        <appender-ref ref="rollingFileAppender"/>
+    </root>
+</configuration>
