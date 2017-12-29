@@ -27,6 +27,15 @@
     </appender>
 
     <logger name="ch.qos" level="ERROR"/>
+    <logger name="org.apache" level="INFO" ></logger>
+    <logger name="org.mybatis" level="INFO" ></logger>
+    <logger name="org.springframework" level="ERROR" ></logger>
+    <logger name="org.hibernate" level="ERROR" ></logger>
+    <logger name="org.aspectj" level="ERROR" ></logger>
+    <logger name="sun.rmi" level="INFO" ></logger>
+    <logger name="sun.net" level="INFO" ></logger>
+    <logger name="javax.management" level="INFO" ></logger>
+    <logger name="com.alibaba" level="OFF" ></logger>
 
     <root level="TRACE">
         <appender-ref ref="STDOUT"/>
